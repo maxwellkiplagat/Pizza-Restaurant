@@ -1,6 +1,8 @@
 from server.app import db
 
 class RestaurantPizza(db.Model):
+    __tablename__ = "restaurant_pizza"
+    __table_args__ = {'extend_existing': True}  
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer, nullable=False)
     
