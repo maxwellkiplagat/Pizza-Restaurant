@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from server.config import Config
+from markupsafe import Markup
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -20,6 +21,11 @@ def create_app():
     app.register_blueprint(restaurant_controller)
     app.register_blueprint(pizza_controller)
     app.register_blueprint(restaurant_pizza_controller)
+
+    @app.route('/')
+    def index():
+        return Markup('<h1>Pizza API Challenge</h1>')
+
 
     return app
 
